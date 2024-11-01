@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "QrIBdZJn+Ma8Hl3YqxCA2pWk4YK8b+LBCWwHvzqci7ArWqbOV5sIyK8V2VGc1Ngttn4QInkQu8LisnbJYStVyg==",
+  "dgSpecHash": "dB2R8UWqxcz3GedpSNmc+0s+1lBiuS99bc3r8V87c+BnDBoe/1peGf1eGmBTc/Np68mVgTrMlQF3T1ba5ClMMQ==",
   "success": true,
-  "projectFilePath": "/Users/itaimargalit/RiderProjects/search-github-users/github-user-search/GitHubUserSearchApp/GitHubUserSearchApp.csproj",
+  "projectFilePath": "/Users/itaimargalit/src/search-github-users/github-user-search/GitHubUserSearchApp/GitHubUserSearchApp.csproj",
   "expectedPackageFiles": [],
   "logs": []
 }
