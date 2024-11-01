@@ -13,11 +13,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "/Users/itaimargalit/RiderProjects/search-github-users/github-user-search/GitHubUserSearchApp/GitHubUserSearchApp.csproj",
+      "projectUniqueName": "/Users/itaimargalit/src/search-github-users/GitHubUserSearchApp/GitHubUserSearchApp.csproj",
       "projectName": "GitHubUserSearchApp",
-      "projectPath": "/Users/itaimargalit/RiderProjects/search-github-users/github-user-search/GitHubUserSearchApp/GitHubUserSearchApp.csproj",
+      "projectPath": "/Users/itaimargalit/src/search-github-users/GitHubUserSearchApp/GitHubUserSearchApp.csproj",
       "packagesPath": "/Users/itaimargalit/.nuget/packages/",
-      "outputPath": "/Users/itaimargalit/RiderProjects/search-github-users/github-user-search/GitHubUserSearchApp/obj/",
+      "outputPath": "/Users/itaimargalit/src/search-github-users/GitHubUserSearchApp/obj/",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "/Users/itaimargalit/.nuget/NuGet/NuGet.Config"
