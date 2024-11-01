@@ -43,7 +43,12 @@ function App() {
             const response = await fetch(`https://localhost:7175/api/githubsearch/search_github_users?q=${encodeURIComponent(query)}&page=${nextPage}&per_page=50`,);
             if (response.ok) {
                 const data = await response.json();
-                setStates({loading:true, users:prevUsers => [...prevUsers, ...data.users], page:nextPage})
+                setStates({
+                    loading: true,
+                    users: prevUsers => [...prevUsers, ...data.users],
+                    page: nextPage,
+                    totalUsers: data.total_count
+                })
             }
         } catch (err) {
             console.error("Error loading next page:", err);

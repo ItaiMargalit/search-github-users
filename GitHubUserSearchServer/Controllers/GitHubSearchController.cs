@@ -17,7 +17,6 @@ namespace GitHubUserSearchApi.Controllers
             _httpClient.DefaultRequestHeaders.UserAgent.Add(new ProductInfoHeaderValue("GitHubUserSearchApi", "1.0"));
 
             var githubToken = Environment.GetEnvironmentVariable("GITHUB_TOKEN");
-            Console.WriteLine(githubToken);
             if (!string.IsNullOrEmpty(githubToken))
             {   
                 _httpClient.DefaultRequestHeaders.TryAddWithoutValidation("Authorization", $"Bearer {githubToken}");
@@ -25,7 +24,7 @@ namespace GitHubUserSearchApi.Controllers
         }
 
         [HttpGet("search_github_users")]
-        public async Task<IActionResult> SearchGitHubUsers([FromQuery] string q, [FromQuery] int page = 1, [FromQuery] int per_page = 12)
+        public async Task<IActionResult> SearchGitHubUsers([FromQuery] string q, [FromQuery] int page = 1, [FromQuery] int per_page = 50)
         {
             if (string.IsNullOrEmpty(q))
             {
@@ -47,11 +46,6 @@ namespace GitHubUserSearchApi.Controllers
                 {
                     PropertyNameCaseInsensitive = true
                 });
-
-                if (searchResult?.Items == null)
-                {
-                    return NotFound("No users found in the GitHub API response.");
-                }
 
                 var userTasks = searchResult.Items.Select(async item =>
                 {
