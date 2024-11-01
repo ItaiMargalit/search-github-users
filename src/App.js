@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, {useState, useEffect} from 'react';
 import './App.css';
 
 function App() {
@@ -11,34 +11,28 @@ function App() {
     const [loading, setLoading] = useState(false);
     const [nextPageLoading, setNextPageLoading] = useState(false);
 
+    const setStates = ({loading = false, users = [], page = 1, error = null, totalUsers = 0}) => {
+        setLoading(loading);
+        setUsers(users);
+        setPage(page);
+        setError(error);
+        setTotalUsers(totalUsers);
+    };
+
     const handleSearch = async (reset = true) => {
         try {
-            setLoading(true);
-            setUsers([]);
-            setPage(1);
-
-            const response = await fetch(`https://localhost:7175/api/githubsearch/search_github_users?q=${encodeURIComponent(query)}&page=1&per_page=50`, {
-                headers: {
-                    'Content-Type': 'application/json',
-                }
-            });
-
+            setStates({loading: true});
+            const response = await fetch(`https://localhost:7175/api/githubsearch/search_github_users?q=${encodeURIComponent(query)}&page=1&per_page=50`,);
             if (!response.ok) {
                 throw new Error(`Error: ${response.status} ${response.statusText}`);
             }
 
             const data = await response.json();
-            console.log("Received data:", data);
+            setStates({users: data.users || [], totalUsers: data.total_count});
 
-            setTotalUsers(data.total_count);
-            setUsers(data.users || []);
-            setError(null);
-            setLoading(false);
         } catch (err) {
             console.error("Error fetching data:", err);
-            setError("An error occurred while fetching data.");
-            setUsers([]);
-            setLoading(false);
+            setStates({error: "Error occured while fetching data"});
         }
     };
 
@@ -46,16 +40,10 @@ function App() {
         try {
             setNextPageLoading(true);
             const nextPage = page + 1;
-            const response = await fetch(`https://localhost:7175/api/githubsearch/search_github_users?q=${encodeURIComponent(query)}&page=${nextPage}&per_page=50`, {
-                headers: {
-                    'Content-Type': 'application/json',
-                }
-            });
-
+            const response = await fetch(`https://localhost:7175/api/githubsearch/search_github_users?q=${encodeURIComponent(query)}&page=${nextPage}&per_page=50`,);
             if (response.ok) {
                 const data = await response.json();
-                setUsers(prevUsers => [...prevUsers, ...data.users]);
-                setPage(nextPage);
+                setStates({loading:true, users:prevUsers => [...prevUsers, ...data.users], page:nextPage})
             }
         } catch (err) {
             console.error("Error loading next page:", err);
@@ -110,7 +98,7 @@ function App() {
                 />
             </div>
 
-            {error && <p style={{ color: 'red' }}>{error}</p>}
+            {error && <p style={{color: 'red'}}>{error}</p>}
 
             <div className="grid-container">
                 {users.map((user) => (
@@ -121,7 +109,7 @@ function App() {
                     >
                         <div className="badge">{user.publicRepos}</div>
                         {user.image ? (
-                            <img src={user.image} alt={user.username} />
+                            <img src={user.image} alt={user.username}/>
                         ) : (
                             <div className="no-picture">No Picture</div>
                         )}
@@ -130,7 +118,7 @@ function App() {
                 ))}
             </div>
 
-            {loading && <p>Loading more users...</p>}
+            {loading && <p>Loading users...</p>}
         </div>
     );
 }

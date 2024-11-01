@@ -2,34 +2,28 @@
 
 body {
   background-color: #0d1117;
-  color: #c9d1d9;
   font-family: Arial, sans-serif;
   text-align: center;
-  margin: 0;
-  padding: 0;
+  color: #c9d1d9;
 }
 
 .App {
   padding: 20px;
-  min-height: 100vh;
 }
 
 h1 {
   font-size: 3em;
   color: #ffffff;
-  margin-bottom: 10px;
 }
 
 h2 {
   font-size: 2em;
   color: #ffffff;
-  margin-bottom: 10px;
 }
 
 .total-users {
   font-size: 1.2em;
   color: #8b949e;
-  margin: 10px 0;
 }
 
 .search-input-container {
@@ -47,12 +41,9 @@ h2 {
 }
 
 .grid-container {
-  margin-top: 20px;
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
   gap: 20px;
-  justify-content: center;
-  align-items: center;
   max-width: 1200px;
   margin: auto;
 }
@@ -65,7 +56,6 @@ h2 {
   border-radius: 10px;
   box-shadow: 0px 0px 10px rgba(0,0,0,0.5);
   cursor: pointer;
-  color: #c9d1d9;
   min-width: 280px;
 }
 

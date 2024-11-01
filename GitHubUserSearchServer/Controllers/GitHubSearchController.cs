@@ -16,7 +16,7 @@ namespace GitHubUserSearchApi.Controllers
             _httpClient = httpClientFactory.CreateClient();
             _httpClient.DefaultRequestHeaders.UserAgent.Add(new ProductInfoHeaderValue("GitHubUserSearchApi", "1.0"));
 
-            var githubToken = Environment.GetEnvironmentVariable("GITHUB_TOKEN");
+            var githubToken = "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";
             if (!string.IsNullOrEmpty(githubToken))
             {
                 _httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", githubToken);
@@ -62,7 +62,7 @@ namespace GitHubUserSearchApi.Controllers
                     var userContent = await userResponse.Content.ReadAsStringAsync();
                     var userDetails = JsonSerializer.Deserialize<GitHubUserDetail>(userContent);
 
-                    return new GitHubUser
+                    return new GitHubUser  
                     {
                         Username = item.Login,
                         Image = item.AvatarUrl ?? "",
